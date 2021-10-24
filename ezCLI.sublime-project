@@ -16,6 +16,9 @@
 				"__pycache__",
 			],
 		},{
+			"path": "docs",
+			"name": "Documentation",
+		},{
 			"path": ".github/workflows",
 			"name": "Actions workflows",
 		},
