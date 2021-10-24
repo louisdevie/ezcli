@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "Project root",
+			"folder_exclude_patterns": [
+				"*",
+			],
+			"file_exclude_patterns": [
+				"*.sublime-*",
+			],
+		},{
+			"path": "ezcli",
+			"name": "Module source",
+			"folder_exclude_patterns": [
+				"__pycache__",
+			],
+		},{
+			"path": ".github/workflows",
+			"name": "Actions workflows",
+		},
+	],
+}
