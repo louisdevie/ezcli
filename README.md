@@ -4,3 +4,4 @@
 [![code quality](https://img.shields.io/badge/code_quality-terrible-critical)](https://github.com/louisdevie/ezcli)
 
 # ezCLI
+
