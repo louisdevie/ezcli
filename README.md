@@ -5,11 +5,11 @@
     <a href="https://github.com/louisdevie/ezcli/actions/workflows/coverage.yml"><img src="https://github.com/louisdevie/ezcli/actions/workflows/coverage.yml/badge.svg" alt="Tests" target="_blank">
     <a href="https://codecov.io/gh/louisdevie/ezcli"><img src="https://codecov.io/gh/louisdevie/ezcli/branch/main/graph/badge.svg?token=KR5ITQQTUF" alt="codecov" target="_blank">
     <a href="https://github.com/louisdevie/ezcli"><img src="https://img.shields.io/badge/code_quality-terrible-critical" alt="code quality" target="_blank">
-    <br>
-    <img src="ezcli_icon.svg" alt="icon"/>
+    <br><br>
+    <img src="ezcli_logo.svg" alt="icon"/>
 </div>
         
-# ezCLI 
+#  
 
 ```python
 # Demo of the package
