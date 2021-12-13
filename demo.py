@@ -1,8 +1,10 @@
 # Demo of the package
 
+import ezcli
+
 import ezcli.printer
 
-ezcli.printer.print_in_cols('A', 'B', 'C')
+ezcli.printer.print_in_cols('anticonstitutionnellement', ezcli.lorem, layout='15 -')
 
 '''
 import ezcli

@@ -1,4 +1,7 @@
 from re import compile as _re
+import os
+
+from . import _utils
 
 REGEX_FIXED_COLUMN = _re(r'\d+')
 REGEX_RELATIVE_COLUMN = _re(r'\d\d?%')
@@ -54,20 +57,20 @@ def parse_layout_column(col):
 	
 def calculate_layout(l):
 	width = os.get_terminal_size()[0]
-	leftover = width
+	leftover = width - len(l) - 1
 	nauto = 0
 	calc = list()
 	for w, u in l:
-		if u == 'fixed':
+		if u == CHARACTERS:
 			calc.append(w)
 			leftover -= calc[-1]
-		elif u == 'relative':
+		elif u == RELATIVE:
 			calc.append(int(w*width/100))
 			leftover -= calc[-1]
-		elif u == 'auto':
+		elif u == FRACTIONAL:
 			calc.append([w])
 			nauto += w
-	autowidth = _split_int(leftover, nauto, 1)
+	autowidth = _utils.split_int(leftover, nauto, 1)
 	i = 0
 	for j in range(len(calc)):
 		if isinstance(calc[j], list):
