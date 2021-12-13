@@ -16,8 +16,12 @@
 				"__pycache__",
 			],
 		},{
-			"path": "docs",
+			"path": "docs/source",
 			"name": "Documentation",
+			"file_include_patterns": [
+				"*.rst",
+				"conf.py",
+			],
 		},{
 			"path": ".github/workflows",
 			"name": "Actions workflows",
