@@ -1,11 +1,11 @@
 import sys as _sys
 from re import compile as _re
 
-from . import _config
 from . import _prebuilt
-from ._error import EzCLIError as _exc
+from .conf import CONFIG
+from ._error import EzCLIError
 
-__all__ = ['arguments', 'config', 'OPTFLAG']
+__all__ = ['arguments', 'OPTFLAG']
 
 _shortopt = _re(r'(-)([a-z])(=.*)')
 _concatopts = _re(r'(-)([a-z]+)')
