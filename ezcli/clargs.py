@@ -5,7 +5,7 @@ from . import _prebuilt
 from .conf import CONFIG
 from ._error import EzCLIError
 
-__all__ = ['arguments', 'OPTFLAG']
+__all__ = ['arguments']
 
 _shortopt = _re(r'(-)([a-z])(=.*)?')
 _concatopts = _re(r'(-)([a-z]+)')
@@ -18,10 +18,6 @@ _long = _re(r'^--[a-z\-]+$')
 class Parameter: pass
 class Option: pass
 
-
-
-_opts = list()
-_args = list()
 
 def arguments(*args):
 	_parse_args()

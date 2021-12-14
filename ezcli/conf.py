@@ -5,7 +5,6 @@ __all__ = ['config']
 from ._error import EzCLIError, warn
 
 
-
 # configuration singleton
 class Configuration:
 	NAME = '[application name]'
@@ -32,7 +31,6 @@ class Configuration:
 		self.LANGUAGE = lang
 
 CONFIG = Configuration()
-
 
 
 def config(appname=None, appversion=None, language='en'):
