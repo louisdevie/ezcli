@@ -1,5 +1,9 @@
 from re import compile as regex
 
+import sys
+argv = sys.argv[1:]
+argc = len(argv)
+
 def split_int(a, b, min=0):
 	bounds = [round(i*a/b) for i in range(b)] + [a]
 	deltas = [max(min, bounds[i+1]-bounds[i]) for i in range(b)]
@@ -29,7 +33,7 @@ def auto_line_break(text, max_width):
 
 	return lines
 
-def _cutq(val):
+def strip(val):
 	if val.startswith('='):
 		val = val[1:]
 	if val.startswith('"'):
