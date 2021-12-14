@@ -1,32 +1,39 @@
 import sys as _sys
-from re import compile as _re
 
 from . import _prebuilt
 from .conf import CONFIG
 from ._error import EzCLIError
+from . import _utils
 
 __all__ = ['arguments']
 
-_shortopt = _re(r'(-)([a-z])(=.*)?')
-_concatopts = _re(r'(-)([a-z]+)')
-_longopt = _re(r'(--)([a-z\-]+)(=.*)?')
+REGEX_SHORT_OPTION = _utils.regex(r'(-)([a-z])(=.*)?')
+REGEX_MULTIPLE_OPTIONS = _utils.regex(r'(-)([a-z]+)')
+REGEX_LONG_OPTION = _utils.regex(r'(--)([a-z\-]+)(=.*)?')
 
-_short = _re(r'^-[a-z]$')
-_long = _re(r'^--[a-z\-]+$')
+REGEX_SHORT_TEMPLATE = _utils.regex(r'^-[a-z]$')
+REGEX_LONG_TEMPLATE = _utils.regex(r'^--[a-z\-]+$')
 
 
 class Parameter: pass
 class Option: pass
 
 
-def arguments(*args):
-	_parse_args()
+def arguments(*params):
+	args = parse_args()
 
-	values = [_checkfor(arg) for arg in args]
+	values = [_checkfor(p) for p in params]
+
 	if _checkfor(('-h', '--help', OPTFLAG)):
 		_print_help_msg()
-	if len(values) == 1:
+		exit(0)
+
+	if len(values) == 0:
+		return None
+
+	elif len(values) == 1:
 		return values[0]
+
 	else:
 		return tuple(values)
 

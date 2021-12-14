@@ -1,11 +1,10 @@
-from re import compile as _re
 import os
 
 from . import _utils
 
-REGEX_FIXED_COLUMN = _re(r'\d+')
-REGEX_RELATIVE_COLUMN = _re(r'\d\d?%')
-REGEX_FRACTIONAL_COLUMN = _re(r'-+')
+REGEX_FIXED_COLUMN = _utils.regex(r'\d+')
+REGEX_RELATIVE_COLUMN = _utils.regex(r'\d\d?%')
+REGEX_FRACTIONAL_COLUMN = _utils.regex(r'-+')
 
 CHARACTERS = 'char'
 RELATIVE = 'rel'
