@@ -7,21 +7,18 @@ from ._error import EzCLIError
 
 __all__ = ['arguments', 'OPTFLAG']
 
-_shortopt = _re(r'(-)([a-z])(=.*)')
+_shortopt = _re(r'(-)([a-z])(=.*)?')
 _concatopts = _re(r'(-)([a-z]+)')
-_longopt = _re(r'(--)([a-z\-])(=.*)')
+_longopt = _re(r'(--)([a-z\-]+)(=.*)?')
 
 _short = _re(r'^-[a-z]$')
 _long = _re(r'^--[a-z\-]+$')
 
-class OptionType:
-	def __init__(self, t):
-		self._type_name = t
 
-	def __repr__(self):
-		return f'<option type {self._type_name}>'
-	
-OPTFLAG = OptionType('FLAG')
+class Parameter: pass
+class Option: pass
+
+
 
 _opts = list()
 _args = list()
@@ -62,16 +59,6 @@ def _parse_args():
 		if not parsing_options:
 			_args.append((None, _cutq(arg)))
 	print(_args)
-
-def _cutq(val):
-	if val.startswith('="'):
-		val = val[2:]
-	else:
-		val = val[1:]
-	if val.endswith('"'):
-		return val[:i-1]
-	else:
-		return val
 
 def _checkfor(arg):
 	if isinstance(arg, tuple):

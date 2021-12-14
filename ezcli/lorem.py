@@ -1,6 +1,6 @@
-__all__ = ['lorem']
+__all__ = ['LOREM']
 
-lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus \
+LOREM = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus \
 facilisis euismod mollis. Ut tellus sapien, elementum ac condimentum in, \
 posuere eget odio. Nullam mi leo, dignissim at sagittis ac, bibendum eu dui. \
 Fusce sapien enim, consequat vitae ex vel, gravida accumsan risus. Proin eu \
