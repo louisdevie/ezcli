@@ -1,29 +1,27 @@
-'''pre-built text/content in different languages'''
+'''pre-built text'''
 
 AVAILABLE_LANGUAGES = [
-	'en',
-	'fr',
+	'en', 'fr',
 ]
 
-INCOMPLETE = []
+INCOMPLETE_LANGUAGES = [
+	
+]
 
-NO_NAME = { # default application name
-	'en': '[application name]',
-	'fr': '[nom de l\'application]'
+TEXT = {
+	# default application name
+	'NO_NAME':    {'en': '[application name]',	'fr': '[nom de l\'application]'},
+
+	# default application version
+	'NO_VERSION': {'en': '[unknown]',           'fr': '[inconnue]'},
 }
 
-NO_VERSION = { # default application version
-	'en': '[unknown]',
-	'fr': '[inconnue]'
-}
+from .conf import CONFIG
 
-from . import _config
-
-def _get(table, lang):
-	return table.get(lang, table.get('en', ''))
-
-def noname():
-	return _get(NO_NAME, _config.LANG)
-
-def noversion():
-	return _get(NO_VERSION, _config.LANG)
+def __getattr__(attr):
+	if attr == 'available':
+		return AVAILABLE_LANGUAGES
+	elif attr == 'incomplete':
+		return INCOMPLETE_LANGUAGES
+	else:
+		return TEXT[attr].get(CONFIG.LANGUAGE, TEXT[attr]['en'])
