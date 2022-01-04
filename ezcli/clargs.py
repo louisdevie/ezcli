@@ -1,6 +1,7 @@
 from . import _prebuilt, _utils
 from .conf import CONFIG
 from ._error import EzCLIError
+from . import printer
 
 __all__ = ['arguments']
 
@@ -121,8 +122,15 @@ def parse_args():
 	return args_found
 
 def print_help_msg(args):
-	print()
-	print('  ', _prebuilt.APP_IDENTITY.format(name=CONFIG.NAME, version=CONFIG.VERSION), end='\n\n')
-	print('   [description]', end='\n\n')
-	print('  ', _prebuilt.CMD_USAGE, end='\n\n')
+	printer.blank_lines()
+	printer.simple_message(_prebuilt.APP_IDENTITY.format(name=CONFIG.NAME, version=CONFIG.VERSION))
+	printer.blank_lines()
+	printer.indent()
+	printer.simple_message('[description]')
+	printer.unindent()
+	printer.blank_lines()
+	printer.simple_message(_prebuilt.CMD_USAGE)
+	printer.indent()
+	printer.simple_message(_utils.cmd + ' [OPTIONS] ')
+	printer.blank_lines()
 	exit(0)

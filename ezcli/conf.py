@@ -44,6 +44,14 @@ It can be called only once.'''
 	# the import is done inside the function to prevent a circular import
 	from . import _prebuilt
 
+	# Set the app's language
+	if language in _prebuilt.available:
+		CONFIG.set_language(language)
+		if language in _prebuilt.incomplete:
+			warn('the language [{language}] isn\'t fully supported') 
+	else:
+		raise EzCLIError('the language [{language}] isn\'t supported')
+
 	# Set the app's name
 	if appname is None:
 		CONFIG.set_name(_prebuilt.NO_NAME)
@@ -56,12 +64,5 @@ It can be called only once.'''
 	else:
 		CONFIG.set_version(appversion)
 
-	# Set the app's language
-	if language in _prebuilt.available:
-		CONFIG.set_language(language)
-		if language in _prebuilt.incomplete:
-			warn('the language [{language}] isn\'t fully supported') 
-	else:
-		raise EzCLIError('the language [{language}] isn\'t supported')
 
 	CONFIG.done()

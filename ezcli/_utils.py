@@ -1,7 +1,7 @@
 from re import compile as regex
 
 import sys
-argv = sys.argv[1:]
+cmd, *argv = sys.argv
 argc = len(argv)
 
 def split_int(a, b, min=0):
