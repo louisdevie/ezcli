@@ -64,7 +64,7 @@ class FlagOption (BaseOption):
 		return bool(super().lookup(arguments))
 
 
-def arguments(*params):
+def arguments(*params, strict=False):
 	args = parse_args()
 
 	values = [p.lookup(args) for p in params]
@@ -119,3 +119,10 @@ def parse_args():
 
 	print(args_found)
 	return args_found
+
+def print_help_msg(args):
+	print()
+	print('  ', _prebuilt.APP_IDENTITY.format(name=CONFIG.NAME, version=CONFIG.VERSION), end='\n\n')
+	print('   [description]', end='\n\n')
+	print('  ', _prebuilt.CMD_USAGE, end='\n\n')
+	exit(0)
